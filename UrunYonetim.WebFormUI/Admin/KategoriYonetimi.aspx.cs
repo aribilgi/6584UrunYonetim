@@ -49,11 +49,17 @@ namespace UrunYonetim.WebFormUI.Admin
 
         protected void btnGuncelle_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                Response.Write("<script>alert('Kategori Adı Giriniz!')</script>");
+                return;
+            }
             var id = Convert.ToInt32(dgvKategoriler.SelectedRow.Cells[1].Text); //
+            var eklenmeTarihi = Convert.ToDateTime(dgvKategoriler.SelectedRow.Cells[5].Text);
             var kategori = new Category()
             {
                 Id = id, //
-                CreateDate = DateTime.Now,
+                CreateDate = eklenmeTarihi,
                 Description = txtDescription.Text,
                 IsActive = cbIsActive.Checked,
                 Name = txtName.Text
@@ -62,16 +68,20 @@ namespace UrunYonetim.WebFormUI.Admin
             var sonuc = manager.Save();
             if (sonuc > 0)
             {
-                dgvKategoriler.DataSource = manager.GetCategories();
-                txtName.Text = string.Empty;
-                txtDescription.Text = string.Empty;
-                //MessageBox.Show("Kayıt Başarılı!");
+                Response.Redirect("KategoriYonetimi.aspx");
             }
         }
 
         protected void btnSil_Click(object sender, EventArgs e)
         {
-
+            var id = Convert.ToInt32(dgvKategoriler.SelectedRow.Cells[1].Text);
+            var kategori = manager.GetCategory(id);
+            manager.Delete(kategori);
+            var sonuc = manager.Save();
+            if (sonuc > 0)
+            {
+                Response.Redirect("KategoriYonetimi.aspx");
+            }
         }
     }
 }
