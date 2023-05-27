@@ -34,5 +34,44 @@ namespace UrunYonetim.WebFormUI.Admin
                 Response.Redirect("KategoriYonetimi.aspx");
             }
         }
+
+        protected void dgvKategoriler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dgvKategoriler.SelectedRow.Cells[1].Text);
+            var kategori = manager.GetCategory(id);
+            txtName.Text = kategori.Name;
+            txtDescription.Text = kategori.Description;
+            cbIsActive.Checked = kategori.IsActive;
+            btnEkle.Enabled = false;
+            btnGuncelle.Enabled = true;
+            btnSil.Enabled = true;
+        }
+
+        protected void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dgvKategoriler.SelectedRow.Cells[1].Text); //
+            var kategori = new Category()
+            {
+                Id = id, //
+                CreateDate = DateTime.Now,
+                Description = txtDescription.Text,
+                IsActive = cbIsActive.Checked,
+                Name = txtName.Text
+            };
+            manager.Update(kategori); //
+            var sonuc = manager.Save();
+            if (sonuc > 0)
+            {
+                dgvKategoriler.DataSource = manager.GetCategories();
+                txtName.Text = string.Empty;
+                txtDescription.Text = string.Empty;
+                //MessageBox.Show("Kayıt Başarılı!");
+            }
+        }
+
+        protected void btnSil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
