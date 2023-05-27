@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using UrunYonetim6584.BL;
+using UrunYonetim6584.Entities;
 
 namespace UrunYonetim.WebFormUI.Admin
 {
@@ -15,6 +16,23 @@ namespace UrunYonetim.WebFormUI.Admin
         {
             dgvKategoriler.DataSource = manager.GetCategories();
             dgvKategoriler.DataBind(); // web de bu metodu çağırmazsak ekrana veri yüklenmiyor!
+        }
+
+        protected void btnEkle_Click(object sender, EventArgs e)
+        {
+            var kategori = new Category()
+            {
+                CreateDate = DateTime.Now,
+                Description = txtDescription.Text,
+                IsActive = cbIsActive.Checked,
+                Name = txtName.Text
+            };
+            manager.Add(kategori);
+            var sonuc = manager.Save();
+            if (sonuc > 0)
+            {
+                Response.Redirect("KategoriYonetimi.aspx");
+            }
         }
     }
 }
