@@ -73,6 +73,8 @@
   <ItemGroup>
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\KategoriYonetimi.aspx" />
+    <Content Include="Admin\KullaniciYonetimi.aspx" />
+    <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\UrunYonetimi.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -91,7 +93,13 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\lock.png" />
+    <Content Include="Images\resim-1.jpg" />
+    <Content Include="Images\resim-2.jpg" />
+    <Content Include="Images\resim-3.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -122,6 +130,20 @@
     <Compile Include="Admin\KategoriYonetimi.aspx.designer.cs">
       <DependentUpon>KategoriYonetimi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\KullaniciYonetimi.aspx.cs">
+      <DependentUpon>KullaniciYonetimi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\KullaniciYonetimi.aspx.designer.cs">
+      <DependentUpon>KullaniciYonetimi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\UrunYonetimi.aspx.cs">
       <DependentUpon>UrunYonetimi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,8 +151,22 @@
     <Compile Include="Admin\UrunYonetimi.aspx.designer.cs">
       <DependentUpon>UrunYonetimi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Onyuz.Master.cs">
+      <DependentUpon>Onyuz.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Onyuz.Master.designer.cs">
+      <DependentUpon>Onyuz.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -152,6 +188,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Onyuz.Master" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -168,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Ürün Yönetimi</h1>
-    <asp:GridView ID="dgvUrunler" runat="server" CssClass="table table-striped table-hover">
+    <asp:GridView ID="dgvUrunler" runat="server" CssClass="table table-striped table-hover" OnSelectedIndexChanged="dgvUrunler_SelectedIndexChanged">
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
@@ -57,14 +57,15 @@
             <td>Ürün Resmi</td>
             <td>
                 <asp:FileUpload ID="fuImage" runat="server" CssClass="form-control" />
+                <asp:Image ID="Image1" runat="server" />
             </td>
         </tr>
         <tr class="mt-3">
             <td></td>
             <td class="mt-3">
                 <asp:Button ID="btnEkle" runat="server" Text="Ekle" CssClass="btn btn-primary" OnClick="btnEkle_Click" />
-                <asp:Button ID="btnGuncelle" runat="server" Text="Güncelle" CssClass="btn btn-success" Enabled="False" />
-                <asp:Button ID="btnSil" runat="server" Text="Sil" CssClass="btn btn-danger" Enabled="False" />
+                <asp:Button ID="btnGuncelle" runat="server" Text="Güncelle" CssClass="btn btn-success" Enabled="False" OnClick="btnGuncelle_Click" />
+                <asp:Button ID="btnSil" runat="server" Text="Sil" CssClass="btn btn-danger" Enabled="False" OnClick="btnSil_Click" />
             </td>
         </tr>
     </table>

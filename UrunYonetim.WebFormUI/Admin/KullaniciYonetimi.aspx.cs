@@ -1,46 +1,31 @@
 ﻿using System;
-using System.Linq;
-using System.Windows.Forms;
+using System.Web.UI;
 using UrunYonetim6584.BL;
 using UrunYonetim6584.Entities;
 
-namespace UrunYonetim6584.WinFormUI
+namespace UrunYonetim.WebFormUI.Admin
 {
-    public partial class KullaniciYonetimi : Form
+    public partial class KullaniciYonetimi : System.Web.UI.Page
     {
-        public KullaniciYonetimi()
-        {
-            InitializeComponent();
-        }
-        Repository<User> repository = new Repository<User>(); // Repository üzerinden veritabanı işlemleri yapabilmek için önce bunu tanımlıyoruz.
-        private void KullaniciYonetimi_Load(object sender, EventArgs e)
-        {
-            Yukle();
-        }
+        Repository<User> repository = new Repository<User>();
         void Yukle()
         {
             dgvKullanicilar.DataSource = repository.GetAll();
-            tabControl1.SelectedTab = tabPage1;
-            Temizle();
+            dgvKullanicilar.DataBind();
         }
-        void Temizle()
+        protected void Page_Load(object sender, EventArgs e)
         {
-            var nesneler = groupBox1.Controls.OfType<TextBox>();
-            foreach (var item in nesneler) // bu nesnelerde dön
+            if (!Page.IsPostBack)
             {
-                item.Clear(); // her nesneyi temizle
+                Yukle();
             }
-            cbIsActive.Checked = false;
-            cbIsAdmin.Checked = false;
-            btnEkle.Enabled = true;
-            btnGuncelle.Enabled = false;
-            btnSil.Enabled = false;
         }
-        private void btnEkle_Click(object sender, EventArgs e)
+
+        protected void btnEkle_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                MessageBox.Show("Adı Alanı Boş Geçilemez!");
+                Response.Write("Adı Alanı Boş Geçilemez!");
                 return;
             }
             var kullanici = new User()
@@ -61,19 +46,18 @@ namespace UrunYonetim6584.WinFormUI
                 var sonuc = repository.Save();
                 if (sonuc > 0)
                 {
-                    Yukle();
-                    MessageBox.Show("Kayıt Başarılı!");
+                    Response.Redirect("KullaniciYonetimi.aspx");
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Hata Oluştu!");
+                Response.Write("Hata Oluştu!");
             }
         }
 
-        private void dgvKullanicilar_CellClick(object sender, DataGridViewCellEventArgs e)
+        protected void dgvKullanicilar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id = Convert.ToInt32(dgvKullanicilar.CurrentRow.Cells["Id"].Value);
+            var id = Convert.ToInt32(dgvKullanicilar.SelectedRow.Cells[1].Text);
             var kullanici = repository.Find(id);
             txtEmail.Text = kullanici.Email;
             txtName.Text = kullanici.Name;
@@ -83,20 +67,20 @@ namespace UrunYonetim6584.WinFormUI
             txtUsername.Text = kullanici.Username;
             cbIsActive.Checked = kullanici.IsActive;
             cbIsAdmin.Checked = kullanici.IsAdmin;
-            tabControl1.SelectedTab = tabPage2;
+            
             btnEkle.Enabled = false;
             btnGuncelle.Enabled = true;
             btnSil.Enabled = true;
         }
 
-        private void btnGuncelle_Click(object sender, EventArgs e)
+        protected void btnGuncelle_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                MessageBox.Show("Adı Alanı Boş Geçilemez!");
+                Response.Write("Adı Alanı Boş Geçilemez!");
                 return;
             }
-            var id = Convert.ToInt32(dgvKullanicilar.CurrentRow.Cells["Id"].Value);
+            var id = Convert.ToInt32(dgvKullanicilar.SelectedRow.Cells[1].Text);
             var kullanici = new User()
             {
                 Id = id,
@@ -116,19 +100,18 @@ namespace UrunYonetim6584.WinFormUI
                 var sonuc = repository.Save();
                 if (sonuc > 0)
                 {
-                    Yukle();
-                    MessageBox.Show("Kayıt Başarılı!");
+                    Response.Redirect("KullaniciYonetimi.aspx");
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Hata Oluştu!");
+                Response.Write("Hata Oluştu!");
             }
         }
 
-        private void btnSil_Click(object sender, EventArgs e)
+        protected void btnSil_Click(object sender, EventArgs e)
         {
-            var id = Convert.ToInt32(dgvKullanicilar.CurrentRow.Cells["Id"].Value);
+            var id = Convert.ToInt32(dgvKullanicilar.SelectedRow.Cells[1].Text);
             var kullanici = repository.Find(id);
             repository.Delete(kullanici);
             try
@@ -136,13 +119,12 @@ namespace UrunYonetim6584.WinFormUI
                 var sonuc = repository.Save();
                 if (sonuc > 0)
                 {
-                    Yukle();
-                    MessageBox.Show("Kayıt Silme Başarılı!");
+                    Response.Redirect("KullaniciYonetimi.aspx");
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Hata Oluştu!");
+                Response.Write("Hata Oluştu!");
             }
         }
     }

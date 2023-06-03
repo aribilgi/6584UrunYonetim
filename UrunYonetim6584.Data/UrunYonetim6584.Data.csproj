@@ -57,6 +57,10 @@
     <Compile Include="Migrations\202304020711035_InitialCreate.designer.cs">
       <DependentUpon>202304020711035_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306031111444_SliderEklendi.cs" />
+    <Compile Include="Migrations\202306031111444_SliderEklendi.designer.cs">
+      <DependentUpon>202306031111444_SliderEklendi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202304020711035_InitialCreate.resx">
       <DependentUpon>202304020711035_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306031111444_SliderEklendi.resx">
+      <DependentUpon>202306031111444_SliderEklendi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

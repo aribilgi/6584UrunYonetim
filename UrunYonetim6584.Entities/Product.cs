@@ -15,6 +15,8 @@ namespace UrunYonetim6584.Entities
         public string Brand { get; set; }
         [DisplayName("Durum")]
         public bool IsActive { get; set; }
+        [DisplayName("Anasayfa")]
+        public bool IsHome { get; set; }
         [DisplayName("Stok")]
         public int Stock { get; set; }
         [DisplayName("Ürün Fiyatı")]
