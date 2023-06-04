@@ -54,10 +54,18 @@
             </td>
         </tr>
         <tr>
+            <td>Anasayfa</td>
+            <td>
+                <asp:CheckBox ID="cbIsHome" runat="server" CssClass="form-control" Text="Göster" />
+            </td>
+        </tr>
+        <tr>
             <td>Ürün Resmi</td>
             <td>
                 <asp:FileUpload ID="fuImage" runat="server" CssClass="form-control" />
                 <asp:Image ID="Image1" runat="server" />
+                <asp:CheckBox ID="cbResmiSil" runat="server" Text="Resmi Sil" />
+                <asp:HiddenField ID="hfResim" runat="server" />
             </td>
         </tr>
         <tr class="mt-3">

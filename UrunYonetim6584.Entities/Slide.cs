@@ -8,7 +8,7 @@ namespace UrunYonetim6584.Entities
     {
         public int Id { get; set; }
         [DisplayName("Eklenme Tarihi")]
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; } = DateTime.Now;
         [DisplayName("Başlık"), StringLength(100)]
         public string Title { get; set; }
         [DisplayName("Açıklama"), StringLength(500)]

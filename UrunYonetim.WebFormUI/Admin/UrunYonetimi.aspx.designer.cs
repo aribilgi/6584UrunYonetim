@@ -87,6 +87,15 @@ namespace UrunYonetim.WebFormUI.Admin
         protected global::System.Web.UI.WebControls.CheckBox cbIsActive;
 
         /// <summary>
+        /// cbIsHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbIsHome;
+
+        /// <summary>
         /// fuImage control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,24 @@ namespace UrunYonetim.WebFormUI.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image1;
+
+        /// <summary>
+        /// cbResmiSil control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbResmiSil;
+
+        /// <summary>
+        /// hfResim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfResim;
 
         /// <summary>
         /// btnEkle control.

@@ -42,6 +42,24 @@ namespace UrunYonetim.WebFormUI
         protected global::System.Web.UI.WebControls.Repeater rptKategoriler;
 
         /// <summary>
+        /// txtAra control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtAra;
+
+        /// <summary>
+        /// btnAra control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAra;
+
+        /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>
