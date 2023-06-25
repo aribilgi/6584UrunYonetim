@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Category>
+
+@foreach (var item in Model)
+{
+    <li>@Html.ActionLink(item.Name, "Index", "Categories", new { area = "" }, new { @class = "nav-link" })</li>
+}

@@ -1,43 +1,45 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using UrunYonetim6584.BL;
 using UrunYonetim6584.Entities;
 
 namespace UrunYonetim.MVCUI.Areas.Admin.Controllers
 {
     [Authorize]
-    public class KullaniciYonetimiController : Controller
+    public class SliderYonetimiController : Controller
     {
-        Repository<User> repository = new Repository<User>();
-        // GET: Admin/KullaniciYonetimi
+        Repository<Slide> repository = new Repository<Slide>();
+        // GET: Admin/SliderYonetimi
         public ActionResult Index()
         {
             var model = repository.GetAll();
             return View(model);
         }
 
-        // GET: Admin/KullaniciYonetimi/Details/5
+        // GET: Admin/SliderYonetimi/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Admin/KullaniciYonetimi/Create
+        // GET: Admin/SliderYonetimi/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/KullaniciYonetimi/Create
+        // POST: Admin/SliderYonetimi/Create
         [HttpPost]
-        public ActionResult Create(User collection)
+        public ActionResult Create(Slide collection, HttpPostedFileBase Image)
         {
-            if (!ModelState.IsValid) // eğer model nesnesinde kurallara uyulmamışsa
-            {
-                return View(collection); // sayfaya geri dön
-            }
             try
             {
                 // TODO: Add insert logic here
+                if (Image != null)
+                {
+                    Image.SaveAs(Server.MapPath("/Images/" + Image.FileName));
+                    collection.Image = Image.FileName;
+                }
                 repository.Add(collection);
                 var sonuc = repository.Save();
                 if (sonuc > 0)
@@ -50,20 +52,29 @@ namespace UrunYonetim.MVCUI.Areas.Admin.Controllers
             return View(collection);
         }
 
-        // GET: Admin/KullaniciYonetimi/Edit/5
+        // GET: Admin/SliderYonetimi/Edit/5
         public ActionResult Edit(int id)
         {
             var model = repository.Find(id);
             return View(model);
         }
 
-        // POST: Admin/KullaniciYonetimi/Edit/5
+        // POST: Admin/SliderYonetimi/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, User collection)
+        public ActionResult Edit(int id, Slide collection, HttpPostedFileBase Image, bool resmiSil)
         {
             try
             {
                 // TODO: Add update logic here
+                if (resmiSil)
+                {
+                    collection.Image = "";
+                }
+                if (Image != null)
+                {
+                    Image.SaveAs(Server.MapPath("/Images/" + Image.FileName));
+                    collection.Image = Image.FileName;
+                }
                 repository.Update(collection);
                 var sonuc = repository.Save();
                 if (sonuc > 0)
@@ -76,14 +87,14 @@ namespace UrunYonetim.MVCUI.Areas.Admin.Controllers
             return View(collection);
         }
 
-        // GET: Admin/KullaniciYonetimi/Delete/5
+        // GET: Admin/SliderYonetimi/Delete/5
         public ActionResult Delete(int id)
         {
             var model = repository.Find(id);
             return View(model);
         }
 
-        // POST: Admin/KullaniciYonetimi/Delete/5
+        // POST: Admin/SliderYonetimi/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

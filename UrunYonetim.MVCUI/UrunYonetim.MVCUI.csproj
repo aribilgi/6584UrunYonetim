@@ -127,7 +127,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\KategoriYonetimiController.cs" />
     <Compile Include="Areas\Admin\Controllers\KullaniciYonetimiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SliderYonetimiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UrunYonetimiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,6 +162,11 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KategoriYonetimi\Index.cshtml" />
+    <Content Include="Images\lock.png" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\resim-1.jpg" />
+    <Content Include="Images\resim-2.jpg" />
+    <Content Include="Images\resim-3.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -172,6 +180,15 @@
     <Content Include="Areas\Admin\Views\KullaniciYonetimi\Create.cshtml" />
     <Content Include="Areas\Admin\Views\KullaniciYonetimi\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KullaniciYonetimi\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SliderYonetimi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SliderYonetimi\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SliderYonetimi\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SliderYonetimi\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UrunYonetimi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UrunYonetimi\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UrunYonetimi\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\UrunYonetimi\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -197,6 +214,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\PartialMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
